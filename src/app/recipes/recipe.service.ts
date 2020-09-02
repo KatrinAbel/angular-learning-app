@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppinglistService } from '../shopping/shoppinglist/shoppinglist.service';
@@ -8,7 +8,6 @@ export class RecipeService {
   // Instead of defining Output in the individual components the Event is centralised here
   // Since the service is instantiated in the high level component recipes, the same instance
   // of this service is available to all child components
-  recipeSelected = new EventEmitter<Recipe>();
   
   private recipes: Recipe[] = [
     new Recipe(
