@@ -12,28 +12,35 @@ export class RecipeService {
 
   recipeChanged = new Subject<Recipe[]>();
   
-  private recipes: Recipe[] = [
-    new Recipe(
-      'A Test Recipe', 
-      'This is simply a test', 
-      'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-      [
-        new Ingredient('Zuchini', 1), 
-        new Ingredient('Kürbis', 3)
-      ]
-      ),
-    new Recipe(
-      'Another Test Recipe', 
-      'This is simply a test', 
-      'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-      [
-        new Ingredient('Zuchini', 1),
-        new Ingredient('Kürbis', 3)
-      ]
-      )
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'A Test Recipe', 
+  //     'This is simply a test', 
+  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+  //     [
+  //       new Ingredient('Zuchini', 1), 
+  //       new Ingredient('Kürbis', 3)
+  //     ]
+  //     ),
+  //   new Recipe(
+  //     'Another Test Recipe', 
+  //     'This is simply a test', 
+  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+  //     [
+  //       new Ingredient('Zuchini', 1),
+  //       new Ingredient('Kürbis', 3)
+  //     ]
+  //     )
+  // ];
+
+  private recipes: Recipe[] = [];
 
   constructor(private shoppinglistService: ShoppinglistService) {}
+
+  setReceipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice()); 
+  }
 
   getRecipes() {
     // create copy of recipe object - if just this.recipes is returned we would directly
